@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Mwalusa87 Deliveries | South Coast Courier Specialists</title>
-    <script src="https://jsdelivr.net"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
             --primary: #059669;
@@ -143,7 +143,7 @@
                     <i data-lucide="calendar-plus" style="width:18px; height:18px;"></i> Book via System
                 </button>
                 
-                <a href="#" id="waBtn" onclick="sendWhatsAppMessage(); return false;" class="btn-whatsapp">
+                <a href="https://wa.me/254716360088" id="waBtn" target="_blank" rel="noopener" onclick="sendWhatsAppMessage(); return false;" class="btn-whatsapp">
                     <i data-lucide="message-square" style="width:18px; height:18px;"></i> Instant Book via WhatsApp
                 </a>
             </form>
@@ -165,3 +165,30 @@
             <i data-lucide="banknote" style="width:28px; height:28px;"></i>
             <div>
                 <h3>Transparent Flat Rates</h3>
+                <p>Flat, upfront pricing for every route along the South Coast corridor. No hidden charges.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const WHATSAPP_URL = 'https://wa.me/254716360088';
+
+        function checkWeight(value) {
+            document.getElementById('weightWarning').style.color = value === 'over' ? 'var(--accent)' : '';
+        }
+
+        function sendWhatsAppMessage() {
+            const pickup = document.getElementById('pickup').value;
+            const dropoff = document.getElementById('dropoff').value;
+            const itemType = document.getElementById('item-type').value;
+            const weight = document.getElementById('weight');
+            const weightLabel = weight.options[weight.selectedIndex].text;
+            const message = `Hello Mwalusa87 Deliveries, I'd like to book a delivery.\n` +
+                `Pickup: ${pickup}\nDrop-off: ${dropoff}\nItem: ${itemType}\nWeight: ${weightLabel}`;
+            window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+        }
+
+        lucide.createIcons();
+    </script>
+</body>
+</html>
